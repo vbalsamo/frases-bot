@@ -1,4 +1,15 @@
 import random
+import os
+import tweepy
+
+consumerKey = os.environ['API_KEY']
+consumerSecret = os.environ['API_KEY_SECRET']
+accessKey = os.environ['ACCESS_TOKEN']
+accessSecret = os.environ['ACCESS_TOKEN_SECRET']
+
+auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
+auth.set_access_token(accessKey, accessSecret)
+api = tweepy.API(auth)
 
 def random_line(afile):
     line = next(afile)
@@ -8,5 +19,4 @@ def random_line(afile):
         line = aline
     return line
 
-archivo = open('frases.txt')
-print(random_line(archivo))
+api.update_status(status = random_line(open('frases.txt')))
