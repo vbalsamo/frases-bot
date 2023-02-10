@@ -19,4 +19,4 @@ def random_line(afile):
         line = aline
     return line
 
-api.update_status(status = random_line(open('frases.txt')))
+api.update_status(status = random_line(open('frases_convertido.txt')))
